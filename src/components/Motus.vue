@@ -17,7 +17,7 @@
       v-model="currentGuess"
       maxlength="7"
       @keyup.enter="submitGuess"
-      placeholder="Enter your guess"
+      placeholder="Enter your guess (7 letters)"
     />
     <button @click="submitGuess">Submit</button>
   </div>
@@ -100,15 +100,5 @@ function getLetterClass(letter: string, idx: number): string {
 .absent {
   background: #787c7e;
   color: #fff;
-}
-.win {
-  color: #6aaa64;
-  font-weight: bold;
-  margin-top: 1em;
-}
-.lose {
-  color: #d33;
-  font-weight: bold;
-  margin-top: 1em;
 }
 </style>
