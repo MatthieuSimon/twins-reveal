@@ -22,12 +22,12 @@ export default {
     },
     methods: {
         checkPrice() {
-            if (this.enteredPrice === 1500) {
+            if (this.enteredPrice === 1206) {
                 window.sessionStorage.setItem('currentStep', '3');
                 emit("puzzle-solved", '3');
-            } else if (this.enteredPrice < 1500) {
+            } else if (this.enteredPrice < 1206) {
                 this.message = "C'est plus!";
-            } else if (this.enteredPrice > 1500) {
+            } else if (this.enteredPrice > 1206) {
                 this.message = "C'est moins!";
             } else {
                 this.message = "";
