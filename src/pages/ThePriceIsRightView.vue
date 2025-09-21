@@ -1,10 +1,13 @@
 <template>
     <div>
-        <h1>Quel est le prix de cette poussette avec ses accessoires?</h1>
+        <h1>{{ t('price_is_right_title') }}</h1>
+        <h2>{{ t('price_is_right_main_text') }}</h2>
+        <h2>{{ t('price_is_right_sub_text') }}</h2>
         <img src="@/assets/versiti-2-nacelles.png" alt="The Price is Right image" class="responsive-img" />
         <div style="margin-top: 20px;">
-            <input v-model.number="enteredPrice" type="number" placeholder="Enter your price" />
-            <button @click="checkPrice">Vérifier</button>
+            <p>{{ t('price_is_right_instructions') }}</p>
+            <input v-model.number="enteredPrice" type="number" />
+            <button @click="checkPrice">{{ t('price_is_right_button') }}</button>
         </div>
         <div v-if="message" style="margin-top: 10px;">
             {{ message }}
@@ -25,26 +28,18 @@ const { t } = useI18n({
   inheritLocale: true
 })
 const router = useRouter();
+const correctPrice = 1206;
 
 function checkPrice() {
-    if (enteredPrice.value === 1206) {
-        router.push('/wordle');
-    } else if (enteredPrice.value < 1206) {
-        message.value = "C'est plus!";
-    } else if (enteredPrice.value > 1206) {
-        message.value = "C'est moins!";
+    if (enteredPrice.value === correctPrice) {
+        router.push('/black-and-white');
+    } else if (enteredPrice.value < correctPrice) {
+        message.value = t("price_is_right_more");
+    } else if (enteredPrice.value > correctPrice) {
+        message.value = t("price_is_right_less");
     } else {
         message.value = "";
     }
 }
     
 </script>
-
-<style scoped>
-.responsive-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-</style>

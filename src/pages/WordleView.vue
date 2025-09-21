@@ -1,6 +1,12 @@
 <template>
+  <h1>{{ t('wordle_title') }}</h1>
+  <div>
+    <p>{{ t('wordle_explanation') }}</p>
+    <p>{{ t('wordle_right_spot') }}</p>
+    <p>{{ t('wordle_somewhere_else') }}</p>
+    <p>{{ t('wordle_wrong_spot') }}</p>
+  </div>
   <div class="motus">
-    <h2>Guess the word!</h2>
     <div class="board">
       <div v-for="(guess, i) in guesses" :key="i" class="row">
         <span
@@ -17,7 +23,6 @@
       v-model="currentGuess"
       maxlength="7"
       @keyup.enter="submitGuess"
-      placeholder="Enter your guess (7 letters)"
     />
     <button @click="submitGuess">Submit</button>
   </div>
@@ -25,11 +30,17 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
-const target = "Jumeaux";
+const target = "Couches";
 const guesses = ref<string[][]>([]);
 const currentGuess = ref<string>("");
-const emit = defineEmits(["puzzle-solved"]);
+const router = useRouter();
+const { t } = useI18n({
+  useScope: 'global',
+  inheritLocale: true
+})
 
 onMounted(() => {
   guesses.value.push(".......".split(""));
@@ -40,8 +51,7 @@ function submitGuess(): void {
   if (guess.length !== 7) return;
   guesses.value.push(guess.split(""));
   if (guess.toLowerCase() === target.toLowerCase()) {
-    window.sessionStorage.setItem('currentStep', '4');
-    emit("puzzle-solved", '4');
+    router.push('reveal-one')
   }
   currentGuess.value = "";
 }
