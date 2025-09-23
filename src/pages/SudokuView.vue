@@ -1,6 +1,8 @@
 <template>
   <h1>{{ t('sudoku_title') }}</h1>
-  <p>{{ t('sudoku_main_text') }}</p>
+  <div class="explanation">
+    <p>{{ t('sudoku_main_text') }}</p>
+  </div>
   <div class="sudoku-grid">
     <div v-for="(row, rowIndex) in 9" :key="rowIndex" class="sudoku-row">
       <div
@@ -20,10 +22,10 @@
       </div>
     </div>
   </div>
-  <div class="legend">{{ t('sudoku_instructions') }}</div>
   <div>
     <div class="date-verify-box">
-      <input type="text" v-model="dateInput" maxlength="10" class="date-input" />
+      <p>{{ t('sudoku_instructions') }}</p>
+      <input type="text" v-model="dateInput" maxlength="10" />
       <button @click="verifyDate">{{ t('sudoku_button') }}</button>
     </div>
     <div v-if="dateFeedback" class="date-feedback">{{ dateFeedback }}</div>
@@ -102,8 +104,9 @@ function verifyDate(): void {
 .sudoku-grid {
   display: flex;
   flex-direction: column;
-  border: 2px solid #333;
+  border: 2px solid #ccd2b8;
   background: #fff;
+  margin: 24px;
 }
 .sudoku-row {
   display: flex;
@@ -111,7 +114,7 @@ function verifyDate(): void {
 .sudoku-cell {
   width: 32px;
   height: 32px;
-  border: 1px solid #999;
+  border: 1px solid #cacaca;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,16 +122,16 @@ function verifyDate(): void {
   position: relative;
 }
 .bold-left {
-  border-left: 3px solid #222 !important;
+  border-left: 4px solid #ccd2b8 !important;
 }
 .bold-top {
-  border-top: 3px solid #222 !important;
+  border-top: 4px solid #ccd2b8 !important;
 }
 .bold-right {
-  border-right: 3px solid #222 !important;
+  border-right: 4px solid #ccd2b8 !important;
 }
 .bold-bottom {
-  border-bottom: 3px solid #222 !important;
+  border-bottom: 4px solid #ccd2b8 !important;
 }
 .sudoku-input {
   width: 100%;
@@ -140,8 +143,7 @@ function verifyDate(): void {
   outline: none;
 }
 .highlight {
-  background: #ffe066;
-  /* border: 2px solid #e1ad01; */
+  background: #ac2f3e;
 }
 .legend {
   margin-top: 12px;
@@ -149,10 +151,10 @@ function verifyDate(): void {
   color: #555;
 }
 .date-verify-box {
-  margin-top: 18px;
   display: flex;
-  gap: 8px;
+  padding: 16px;
   align-items: center;
+  gap: 10px;
 }
 .date-input {
   font-size: 1.1em;
