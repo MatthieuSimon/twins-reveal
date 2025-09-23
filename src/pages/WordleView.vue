@@ -27,11 +27,10 @@ import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
-const target = 'Couches'
 const guesses = ref<string[][]>([])
 const currentGuess = ref<string>('')
 const router = useRouter()
-const { t } = useI18n({
+const { t, locale } = useI18n({
   useScope: 'global',
   inheritLocale: true,
 })
@@ -40,18 +39,22 @@ onMounted(() => {
   guesses.value.push('.......'.split(''))
 })
 
+function getTargetWord(): string {
+  return locale.value === 'fr-FR' ? 'Couches' : 'Diapers'
+}
+
 function submitGuess(): void {
   const guess = currentGuess.value.trim()
   if (guess.length !== 7) return
   guesses.value.push(guess.split(''))
-  if (guess.toLowerCase() === target.toLowerCase()) {
+  if (guess.toLowerCase() === getTargetWord().toLowerCase()) {
     router.push('reveal-one')
   }
   currentGuess.value = ''
 }
 
 function getLetterClass(letter: string, idx: number): string {
-  const targetArr = target.split('')
+  const targetArr = getTargetWord().split('')
   if (letter.toLowerCase() === targetArr[idx].toLowerCase()) {
     return 'correct'
   } else if (

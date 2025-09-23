@@ -1,9 +1,27 @@
 <template>
   <meta charset="utf-8" />
   <div class="game-container">
+    <div class="locale-switcher">
+      <button @click="setLocale('fr-FR')" :aria-label="'Français'">
+        <span class="flag-img">&#127467;&#127479;</span>
+      </button>
+      <button @click="setLocale('en-GB')" :aria-label="'English'">
+        <span class="flag-img">&#127468;&#127463;</span>
+      </button>
+    </div>
     <RouterView />
   </div>
 </template>
+
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
+function setLocale(lang: string) {
+  locale.value = lang
+}
+</script>
 
 <style>
 body {
@@ -25,6 +43,15 @@ html * {
   flex-direction: column;
   align-items: center;
 }
+.locale-switcher {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.flag-img {
+  display: block;
+  font-size: 32px;
+}
 .responsive-img {
   max-width: 100%;
   height: auto;
@@ -40,6 +67,15 @@ button {
   gap: 10px;
   justify-content: center;
   align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.locale-switcher button {
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
 }
 
 h1 {
