@@ -19,6 +19,13 @@
       <input v-model="currentGuess" maxlength="7" @keyup.enter="submitGuess" />
       <button @click="submitGuess">{{ t('wordle_button') }}</button>
     </div>
+    <div v-if="message" class="message">
+      {{ message }}
+    </div>
+    <div class="tooltip-wrapper" @mouseenter="showHint = true" @mouseleave="showHint = false">
+      &#9432; {{ t('need_hint') }}
+      <div v-if="showHint" class="tooltip">{{ t('hint_wordle') }}</div>
+    </div>
   </div>
 </template>
 
@@ -28,6 +35,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
 const guesses = ref<string[][]>([])
+const message = ref<string>('')
 const currentGuess = ref<string>('')
 const router = useRouter()
 const { t, locale } = useI18n({
@@ -39,13 +47,21 @@ onMounted(() => {
   guesses.value.push('.......'.split(''))
 })
 
+const showHint = ref(false);
+
+
 function getTargetWord(): string {
   return locale.value === 'fr-FR' ? 'Couches' : 'Diapers'
 }
 
 function submitGuess(): void {
   const guess = currentGuess.value.trim()
-  if (guess.length !== 7) return
+  console.log(submitGuess);
+  if (guess.length !== 7) {
+    message.value = t('word_length_incorrect');
+    return;
+  }
+  message.value = '';
   guesses.value.push(guess.split(''))
   if (guess.toLowerCase() === getTargetWord().toLowerCase()) {
     router.push('reveal-one')
@@ -73,7 +89,6 @@ function getLetterClass(letter: string, idx: number): string {
 
 <style scoped>
 .motus {
-  max-width: 350px;
   margin: 2em auto;
   text-align: center;
 }
@@ -83,7 +98,7 @@ function getLetterClass(letter: string, idx: number): string {
 .row {
   display: flex;
   justify-content: center;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 .cell {
   width: 32px;
@@ -94,6 +109,8 @@ function getLetterClass(letter: string, idx: number): string {
   text-transform: uppercase;
   color: #fff;
   border-radius: 64px;
+  display: inline-grid;
+  margin-right: 16px;
 }
 .correct {
   background: #596d1e;

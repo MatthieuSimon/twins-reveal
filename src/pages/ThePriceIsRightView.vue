@@ -5,16 +5,16 @@
     <p>{{ t('price_is_right_sub_text') }}</p>
   </div>
   <img
-    src="@/assets/versiti-2-nacelles.png"
+    src="@/assets/poussette.png"
     alt="The Price is Right image"
     class="responsive-img"
   />
   <div class="input-container">
-    <p>{{ t('price_is_right_instructions') }}</p>
+    <p class="question">{{ t('price_is_right_instructions') }}</p>
     <input v-model.number="enteredPrice" type="number" />
     <button @click="checkPrice">{{ t('price_is_right_button') }}</button>
   </div>
-  <div v-if="message" style="margin-top: 10px">
+  <div v-if="message" class="message">
     {{ message }}
   </div>
 </template>
@@ -37,19 +37,11 @@ function checkPrice() {
   if (enteredPrice.value === correctPrice) {
     router.push('/black-and-white')
   } else if (enteredPrice.value < correctPrice) {
-    message.value = t('price_is_right_more')
+    message.value = t('price_is_right_more') + enteredPrice.value + ' € !'
   } else if (enteredPrice.value > correctPrice) {
-    message.value = t('price_is_right_less')
+    message.value = t('price_is_right_less') + enteredPrice.value + ' € !'
   } else {
     message.value = ''
   }
 }
 </script>
-
-<style scoped>
-input {
-  border-radius: 4px;
-  border: 1px solid #cfd2c7;
-  background: #fafaf8;
-}
-</style>

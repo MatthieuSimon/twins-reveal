@@ -1,16 +1,17 @@
 <template>
   <div>
     <h1>{{ t('welcome_title') }}</h1>
-    <h2>{{ t('welcome_main_text') }}</h2>
-    <h2>{{ t('welcome_main_text_2') }}</h2>
+    <lg>{{ t('welcome_main_text') }}{{days}}{{ t('welcome_main_text_2') }}</lg>
     <img
-      src="@/assets/versiti-2-nacelles.png"
+      src="@/assets/welcome_image.png"
       alt="The Price is Right image"
+      style="max-width: 50%; padding-top: 50px;"
       class="responsive-img"
     />
-    <h2>{{ t('welcome_sub_title') }}</h2>
-    <p>{{ t('welcome_sub_text') }}</p>
-    <p>{{ t('welcome_sub_text_2') }}</p>
+    <lg>{{ t('welcome_sub_title') }}</lg>
+    <div class="explanation">
+      <p>{{ t('welcome_sub_text') }}</p>
+    </div>
     <div class="button-container">
       <button @click="router.push('the-price-is-right')">{{ t('welcome_button') }}</button>
     </div>
@@ -28,4 +29,9 @@ const { t } = useI18n({
   useScope: 'global',
   inheritLocale: true,
 })
+
+var countDownDate = new Date("Feb 14, 2026 00:00:00").getTime();
+var now = new Date().getTime();
+var distance = countDownDate - now;
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
 </script>

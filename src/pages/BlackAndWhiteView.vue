@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ t('baw_title') }}</h1>
-    <h2>{{ t('baw_main_text') }}</h2>
+    <lg>{{ t('baw_main_text') }}</lg>
     <img
       src="@/assets/versiti-2-nacelles.png"
       alt="The Price is Right image"

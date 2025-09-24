@@ -28,7 +28,11 @@
       <input type="text" v-model="dateInput" maxlength="10" />
       <button @click="verifyDate">{{ t('sudoku_button') }}</button>
     </div>
-    <div v-if="dateFeedback" class="date-feedback">{{ dateFeedback }}</div>
+    <div class="message" v-if="dateFeedback">{{ dateFeedback }}</div>
+  </div>
+  <div class="tooltip-wrapper" @mouseenter="showHint = true" @mouseleave="showHint = false">
+    &#9432; {{ t('need_hint') }}
+    <div v-if="showHint" class="tooltip">{{ t('hint_sudoku') }}</div>
   </div>
 </template>
 
@@ -67,6 +71,8 @@ const highlights: Array<[number, number]> = [
   [0, 3],
 ]
 
+const showHint = ref(false);
+
 function highlightClass(row: number, col: number): string {
   return highlights.some(([r, c]) => r === row && c === col) ? 'highlight' : ''
 }
@@ -88,14 +94,14 @@ function boldBorderClass(row: number, col: number): string {
   return classes.join(' ')
 }
 // Date input and verification
-const dateInput = ref<string>('__/0_/_0__')
+const dateInput = ref<string>('')
 const dateFeedback = ref<string>('')
 
 function verifyDate(): void {
   if (dateInput.value === '14/02/2026') {
     router.push('/congratulations')
   } else {
-    dateFeedback.value = 'Try again.'
+    dateFeedback.value = t('try_again')
   }
 }
 </script>
@@ -104,7 +110,7 @@ function verifyDate(): void {
 .sudoku-grid {
   display: flex;
   flex-direction: column;
-  border: 2px solid #ccd2b8;
+  border: 2px solid var(--secondary);
   background: #fff;
   margin: 24px;
 }
@@ -122,18 +128,19 @@ function verifyDate(): void {
   position: relative;
 }
 .bold-left {
-  border-left: 4px solid #ccd2b8 !important;
+  border-left: 4px solid var(--secondary) !important;
 }
 .bold-top {
-  border-top: 4px solid #ccd2b8 !important;
+  border-top: 4px solid var(--secondary) !important;
 }
 .bold-right {
-  border-right: 4px solid #ccd2b8 !important;
+  border-right: 4px solid var(--secondary) !important;
 }
 .bold-bottom {
-  border-bottom: 4px solid #ccd2b8 !important;
+  border-bottom: 4px solid var(--secondary) !important;
 }
 .sudoku-input {
+  padding: 0px;
   width: 100%;
   height: 100%;
   border: none;
@@ -143,7 +150,10 @@ function verifyDate(): void {
   outline: none;
 }
 .highlight {
-  background: #ac2f3e;
+  background: var(--accent);
+}
+.highlight input {
+  color: var(--white) !important;
 }
 .legend {
   margin-top: 12px;
@@ -163,9 +173,25 @@ function verifyDate(): void {
   border: 1px solid #aaa;
   border-radius: 4px;
 }
-.date-feedback {
-  margin-top: 8px;
-  font-size: 1em;
-  color: #197d19;
+
+.date-verify-box {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: stretch;   /* Make inputs/buttons full width */
+  gap: 0.75rem;           /* Space between elements */
+  max-width: 400px;       /* Optional: limit box width on large screens */
+  margin: 0 auto;         /* Center on page */
+  padding: 1rem;
+  box-sizing: border-box;
 }
+
+.date-verify-box input,
+.date-verify-box button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;           /* Make input/button fill container */
+  box-sizing: border-box;
+}
+
+
 </style>

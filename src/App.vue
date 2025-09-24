@@ -24,24 +24,42 @@ function setLocale(lang: string) {
 </script>
 
 <style>
+:root {
+  --accent: #AC2F3E;
+  --primary: #596D1E;
+  --secondary: #CCD2BB;
+  --grey: #CFD2C7;
+  --white: #FAFAF8;
+}
+
 body {
   background-image: url('@/assets/background.png');
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+  font-size: 18px;
 }
 html * {
-  font-family: 'Proxima Nova' !important;
+  font-family: 'Quicksand', sans-serif !important;
 }
 .explanation {
   padding: 24px;
   align-items: center;
   border-radius: 4px;
-  background: #ccd2bb;
+  background: var(--secondary);
+  margin: 24px;
 }
 .game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  max-width: 800px;      
+  border-radius: 10px;
+  text-align: center;
 }
 .locale-switcher {
   display: flex;
@@ -53,23 +71,36 @@ html * {
   font-size: 32px;
 }
 .responsive-img {
-  max-width: 100%;
+  width: 90%;
+  max-width: 500px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   height: auto;
   display: block;
   margin: 0 auto;
 }
 button {
-  padding: 8px 12px;
   color: white;
-  background-color: #ac2f3e;
+  background-color: var(--accent);
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 100px;
   gap: 10px;
   justify-content: center;
   align-items: center;
   border: none;
   cursor: pointer;
+  display: flex;
+  padding: 12px 20px;
+  color: var(--white);
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
 }
+
 
 .locale-switcher button {
   background: transparent;
@@ -79,14 +110,15 @@ button {
 }
 
 h1 {
+  font-family: 'Pacifico', sans-serif !important;
   text-align: center;
   font-size: 50px;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 120%;
 }
 
-h2 {
+lg {
   text-align: center;
   font-size: 24px;
   font-style: normal;
@@ -96,7 +128,7 @@ h2 {
 
 p {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
@@ -108,8 +140,76 @@ p {
 }
 .input-container {
   display: flex;
-  padding: 16px;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column; 
+  align-items: stretch;   
+  gap: 0.75rem;           
+  max-width: 400px;       
+  margin: 0 auto;         
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+input {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 16px;
+  border-radius: 100px;
+  border: 1px solid var(--grey);
+  background: var(--white);
+  width: 100%;  
+  box-sizing: border-box;
+}
+
+.message {
+  color: var(--accent);
+  margin-top: 10px
+}
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+  color: #999999ff;
+  margin-top: 24px;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%; /* show above the element */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  z-index: 10;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.pt-large {
+  padding-top: 24px;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /* phones */
+  }
+  h1 {
+    font-size: 24px; /* phones */
+  }
+  lg {
+    font-size: 18px; /* phones */
+  }
+  p {
+    font-size: 14px; /* phones */
+  }
 }
 </style>
