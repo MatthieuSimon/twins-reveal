@@ -30,7 +30,12 @@
     </div>
     <div class="message" v-if="dateFeedback">{{ dateFeedback }}</div>
   </div>
-  <div class="tooltip-wrapper" @mouseenter="showHint = true" @mouseleave="showHint = false">
+  <div
+    class="tooltip-wrapper"
+    @mouseenter="showHint = true"
+    @mouseleave="showHint = false"
+    @mouseclick="showHint = !showHint"
+  >
     &#9432; {{ t('need_hint') }}
     <div v-if="showHint" class="tooltip">{{ t('hint_sudoku') }}</div>
   </div>
@@ -71,7 +76,7 @@ const highlights: Array<[number, number]> = [
   [0, 3],
 ]
 
-const showHint = ref(false);
+const showHint = ref(false)
 
 function highlightClass(row: number, col: number): string {
   return highlights.some(([r, c]) => r === row && c === col) ? 'highlight' : ''
@@ -177,10 +182,10 @@ function verifyDate(): void {
 .date-verify-box {
   display: flex;
   flex-direction: column; /* Stack elements vertically */
-  align-items: stretch;   /* Make inputs/buttons full width */
-  gap: 0.75rem;           /* Space between elements */
-  max-width: 400px;       /* Optional: limit box width on large screens */
-  margin: 0 auto;         /* Center on page */
+  align-items: stretch; /* Make inputs/buttons full width */
+  gap: 0.75rem; /* Space between elements */
+  max-width: 400px; /* Optional: limit box width on large screens */
+  margin: 0 auto; /* Center on page */
   padding: 1rem;
   box-sizing: border-box;
 }
@@ -189,9 +194,7 @@ function verifyDate(): void {
 .date-verify-box button {
   padding: 0.5rem;
   font-size: 1rem;
-  width: 100%;           /* Make input/button fill container */
+  width: 100%; /* Make input/button fill container */
   box-sizing: border-box;
 }
-
-
 </style>
