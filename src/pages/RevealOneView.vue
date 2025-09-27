@@ -6,14 +6,11 @@
     :stageHeight="1200"
     :stageWidth="2000"
     :colors="['#ff0088ff', '#ff96ceff', '#f5dbecff']"
-    />
-  <img
-    src="@/assets/girl.jpeg"
-    alt="The Price is Right image"
-    class="responsive-img"
   />
+  <img src="@/assets/girl.jpeg" alt="The Price is Right image" class="responsive-img" />
   <h1>{{ t('reveal_one_title') }}</h1>
   <lg>{{ t('reveal_one_main_text') }}</lg>
+  <p>{{ t('reveal_one_explanation_muisjes') }}</p>
   <div class="button-container pt-large">
     <button @click="router.push('sudoku')">{{ t('reveal_one_button') }}</button>
   </div>
@@ -22,7 +19,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import ConfettiExplosion from "vue-confetti-explosion";
+import ConfettiExplosion from 'vue-confetti-explosion'
 
 const router = useRouter()
 
