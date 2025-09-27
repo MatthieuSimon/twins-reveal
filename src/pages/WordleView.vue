@@ -9,7 +9,12 @@
   <div class="motus">
     <div class="board">
       <div v-for="(guess, i) in guesses" :key="i" class="row">
-        <span v-for="(letter, j) in guess" :key="j" :class="getLetterClass(letter, j)" class="cell">
+        <span
+          v-for="(letter, j) in guess"
+          :key="j"
+          :class="getLetterClass(letter, j, i)"
+          class="cell"
+        >
           {{ letter }}
         </span>
       </div>
@@ -22,7 +27,12 @@
     <div v-if="message" class="message">
       {{ message }}
     </div>
-    <div class="tooltip-wrapper" @mouseenter="showHint = true" @mouseleave="showHint = false">
+    <div
+      class="tooltip-wrapper"
+      @mouseenter="showHint = true"
+      @mouseleave="showHint = false"
+      @click="showHint = !showHint"
+    >
       &#9432; {{ t('need_hint') }}
       <div v-if="showHint" class="tooltip">{{ t('hint_wordle') }}</div>
     </div>
@@ -47,8 +57,7 @@ onMounted(() => {
   guesses.value.push('.......'.split(''))
 })
 
-const showHint = ref(false);
-
+const showHint = ref(false)
 
 function getTargetWord(): string {
   return locale.value === 'fr-FR' ? 'Couches' : 'Diapers'
@@ -56,12 +65,12 @@ function getTargetWord(): string {
 
 function submitGuess(): void {
   const guess = currentGuess.value.trim()
-  console.log(submitGuess);
+  console.log(submitGuess)
   if (guess.length !== 7) {
-    message.value = t('word_length_incorrect');
-    return;
+    message.value = t('word_length_incorrect')
+    return
   }
-  message.value = '';
+  message.value = ''
   guesses.value.push(guess.split(''))
   if (guess.toLowerCase() === getTargetWord().toLowerCase()) {
     router.push('reveal-one')
@@ -69,15 +78,13 @@ function submitGuess(): void {
   currentGuess.value = ''
 }
 
-function getLetterClass(letter: string, idx: number): string {
+function getLetterClass(letter: string, idx: number, rowIdx: number): string {
   const targetArr = getTargetWord().split('')
   if (letter.toLowerCase() === targetArr[idx].toLowerCase()) {
     return 'correct'
   } else if (
     targetArr.some(
-      (l, i) =>
-        l.toLowerCase() === letter.toLowerCase() &&
-        guesses.value[guesses.value.length - 1][i] !== l,
+      (l, i) => l.toLowerCase() === letter.toLowerCase() && guesses.value[rowIdx][i] !== l,
     )
   ) {
     return 'present'

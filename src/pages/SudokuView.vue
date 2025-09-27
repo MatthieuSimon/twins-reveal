@@ -34,7 +34,7 @@
     class="tooltip-wrapper"
     @mouseenter="showHint = true"
     @mouseleave="showHint = false"
-    @mouseclick="showHint = !showHint"
+    @click="showHint = !showHint"
   >
     &#9432; {{ t('need_hint') }}
     <div v-if="showHint" class="tooltip">{{ t('hint_sudoku') }}</div>
@@ -54,26 +54,26 @@ const { t } = useI18n({
 const router = useRouter()
 
 const initialGrid: (number | string)[][] = [
-  [3, 4, 2, '', 8, 7, 1, 9, 5],
-  [1, 9, 7, 2, 5, 4, 8, 6, 3],
-  [5, 6, 8, 9, 1, 3, '', 4, 7],
+  [3, 4, 2, 6, 8, 7, 1, 9, 5],
+  ['', 9, 7, 2, 5, 4, 8, 6, 3],
+  [5, 6, 8, 9, 1, 3, 2, '', 7],
   [6, 8, 5, 4, 7, 9, 3, 1, 2],
-  [7, 3, '', 1, 6, '', 9, 5, 8],
-  ['', 1, 9, 5, 3, 8, 6, 7, 4],
-  [9, 2, 6, 3, 4, 5, 7, 8, 1],
-  [8, 5, '', 7, 2, 6, 4, 3, 9],
-  [4, 7, 3, 8, 9, 1, 5, 2, 6],
+  [7, 3, 4, 1, 6, '', 9, 5, 8],
+  [2, 1, 9, 5, 3, 8, 6, 7, 4],
+  [9, '', 6, 3, 4, 5, 7, 8, 1],
+  [8, 5, 1, 7, '', 6, 4, 3, 9],
+  [4, 7, 3, 8, 9, 1, 5, 2, ''],
 ]
 
 const userGrid = ref<(number | string)[][]>(initialGrid.map((row) => row.slice()))
 
 const highlights: Array<[number, number]> = [
-  [7, 2],
-  [4, 2],
-  [2, 6],
-  [5, 0],
+  [1, 0],
+  [2, 7],
   [4, 5],
-  [0, 3],
+  [6, 1],
+  [7, 4],
+  [8, 8],
 ]
 
 const showHint = ref(false)
