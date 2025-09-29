@@ -200,7 +200,7 @@ a {
 
 @media (max-width: 480px) {
   body {
-    font-size: 14px; /* phones */
+    font-size: 16px; /* phones */
   }
   h1 {
     font-size: 24px; /* phones */
@@ -209,7 +209,7 @@ a {
     font-size: 18px; /* phones */
   }
   p {
-    font-size: 14px; /* phones */
+    font-size: 16x; /* phones */
   }
 }
 </style>
