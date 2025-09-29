@@ -1,7 +1,7 @@
 {
   "welcome_title": "Gender Reveal",
   "welcome_main_text": "Only ",
-  "welcome_main_text_2": " X days left before meeting our two little treasures... \uD83D\uDC76\uD83D\uDC76 Today, we have a little game for you to discover their gender(s)!",
+  "welcome_main_text_2": " days left before meeting our two little treasures... \uD83D\uDC76\uD83D\uDC76 Today, we have a little game for you to discover their gender(s)!",
   "welcome_sub_title": "Ready to take on the challenge and discover the secret? \uD83D\uDC40",
   "welcome_sub_text": "Solve our riddles in order to unlock the final reveal. Each game will bring you closer to the truth. Good luck!",
   "welcome_button": "START",
@@ -39,7 +39,7 @@
   "congratulations_title": "Congratulations!",
   "try_again": "Try again !",
   "open_list": "Open the gift list",
-  "list_explanation": "In France, it's customary to share a gift list. Relatives can choose and offer gifts, which avoids duplicates and ensures parents receive the items they've chosen.",
+  "list_explanation": "In France, it's customary to share a gift list. Relatives can choose and offer gifts, which avoids duplicates and ensures parents receive the items they've chosen. You don't have to participate if you don't want to! 🙂",
   "suggest_names": "Suggest some names",
   "suggest_names_href": "https://forms.gle/MV2VwrZpcRUxDQnN6"
 }
