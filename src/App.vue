@@ -34,6 +34,7 @@ function setLocale(lang: string) {
 
 body {
   background-image: url('@/assets/background.png');
+  background-color: #E6E9DD;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -83,6 +84,7 @@ button {
   color: white;
   background-color: var(--accent);
   font-weight: bold;
+  font-size: 16px;
   border-radius: 100px;
   gap: 10px;
   justify-content: center;
