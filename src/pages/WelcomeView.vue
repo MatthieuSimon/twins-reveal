@@ -5,7 +5,7 @@
     <img
       src="@/assets/welcome_image.png"
       alt="The Price is Right image"
-      style="max-width: 50%; padding-top: 50px;"
+      style="padding-top: 50px;"
       class="responsive-img"
     />
     <lg>{{ t('welcome_sub_title') }}</lg>
