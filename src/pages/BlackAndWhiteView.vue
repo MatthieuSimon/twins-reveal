@@ -3,10 +3,11 @@
     <h1>{{ t('baw_title') }}</h1>
     <lg>{{ t('baw_main_text') }}</lg>
     <img
-      src="@/assets/versiti-2-nacelles.png"
-      alt="The Price is Right image"
+      src="@/assets/Gender_reveal.png"
+      alt="Gender reveal image en noir et blanc"
       class="responsive-img"
     />
+  <p>{{ t('reveal_one_explanation_muisjes') }}</p>
     <div class="button-container">
       <button @click="router.push('wordle')">{{ t('baw_button') }}</button>
     </div>

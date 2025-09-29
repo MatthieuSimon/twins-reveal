@@ -7,10 +7,9 @@
     :stageWidth="2000"
     :colors="['#ff0088ff', '#ff96ceff', '#f5dbecff']"
   />
-  <img src="@/assets/girl.jpeg" alt="The Price is Right image" class="responsive-img" />
+  <img src="@/assets/Reveal_1.png" alt="Baby 1 is a girl" class="responsive-img" />
   <h1>{{ t('reveal_one_title') }}</h1>
   <lg>{{ t('reveal_one_main_text') }}</lg>
-  <p>{{ t('reveal_one_explanation_muisjes') }}</p>
   <div class="button-container pt-large">
     <button @click="router.push('sudoku')">{{ t('reveal_one_button') }}</button>
   </div>

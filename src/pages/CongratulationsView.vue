@@ -7,7 +7,7 @@
     :stageWidth="2000"
     :colors="['#3e38f8ff', '#928ffbff', '#eae9ffff']"
   />
-  <img src="@/assets/boy.jpeg" alt="Baby 2 is a boy" class="responsive-img" />
+  <img src="@/assets/Reveal_2.png" alt="Baby 2 is a boy" class="responsive-img" />
   <h1>{{ t('reveal_two_title') }}</h1>
   <p class="lg">{{ t('reveal_two_main_text') }}</p>
   <div class="button-container pt-large">
