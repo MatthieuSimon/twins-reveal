@@ -34,7 +34,7 @@
   "reveal_two_main_text": "Nous avons hâte de vous les présenter. En attendant, voici de quoi vous occuper. 😄",
   "sudoku_title": "Jeu #3 - Sudoku",
   "sudoku_main_text": "Résolvez le sudoku en tapant des chiffres dans les cases rouges. Les cases rouges vous donneront une date qu'il faudra entrer ci-dessous !",
-  "sudoku_instructions": "Entrez une date (jj/mm/aaaa)",
+  "sudoku_instructions": "Entrez la date formée par les lettres rouges (jj/mm/aaaa). Ajouter des zéros si nécessaire.",
   "sudoku_button": "ESSAYER",
   "congratulations_title": "Bravo !",
   "try_again": "Essaie encore !",
