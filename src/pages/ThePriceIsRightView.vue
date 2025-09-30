@@ -23,6 +23,7 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { event } from 'vue-gtag'
 
 const enteredPrice = ref<number>(0)
 const message = ref<string>('')
@@ -34,6 +35,7 @@ const router = useRouter()
 const correctPrice = 1206
 
 function checkPrice() {
+  event('the_price_is_right', { enteredPrice: enteredPrice.value });
   if (enteredPrice.value === correctPrice) {
     router.push('/black-and-white')
   } else if (enteredPrice.value < correctPrice) {

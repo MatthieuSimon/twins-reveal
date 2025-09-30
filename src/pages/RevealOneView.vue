@@ -9,7 +9,7 @@
   />
   <img src="@/assets/Reveal_1.jpeg" alt="Baby 1 is a girl" class="responsive-img" />
   <h1>{{ t('reveal_one_title') }}</h1>
-  <lg>{{ t('reveal_one_main_text') }}</lg>
+  <p class="lg">{{ t('reveal_one_main_text') }}</p>
   <div class="button-container pt-large">
     <button @click="router.push('sudoku')">{{ t('reveal_one_button') }}</button>
   </div>

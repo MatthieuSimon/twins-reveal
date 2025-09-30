@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ t('baw_title') }}</h1>
-    <lg>{{ t('baw_main_text') }}</lg>
+    <p class="lg">{{ t('baw_main_text') }}</p>
     <img
       src="@/assets/Gender_reveal.jpeg"
       alt="Gender reveal image en noir et blanc"

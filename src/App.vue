@@ -120,7 +120,7 @@ h1 {
   line-height: 120%;
 }
 
-lg {
+.lg {
   text-align: center;
   font-size: 24px;
   font-style: normal;

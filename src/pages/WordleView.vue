@@ -43,6 +43,7 @@
 import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { event } from 'vue-gtag'
 
 const guesses = ref<string[][]>([])
 const message = ref<string>('')
@@ -58,14 +59,16 @@ onMounted(() => {
 })
 
 const showHint = ref(false)
+const nbAttempt = ref(0);
 
 function getTargetWord(): string {
   return locale.value === 'fr-FR' ? 'Couches' : 'Diapers'
 }
 
 function submitGuess(): void {
+  nbAttempt.value = nbAttempt.value+1;
+  event('wordle_guess', { word: currentGuess });
   const guess = currentGuess.value.trim()
-  console.log(submitGuess)
   if (guess.length !== 7) {
     message.value = t('word_length_incorrect')
     return
@@ -73,6 +76,7 @@ function submitGuess(): void {
   message.value = ''
   guesses.value.push(guess.split(''))
   if (guess.toLowerCase() === getTargetWord().toLowerCase()) {
+    event('wordle_success', { nbAttempt: nbAttempt.value });
     router.push('reveal-one')
   }
   currentGuess.value = ''

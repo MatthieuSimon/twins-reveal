@@ -45,6 +45,7 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { event } from 'vue-gtag'
 
 // use global scope
 const { t } = useI18n({
@@ -103,6 +104,7 @@ const dateInput = ref<string>('')
 const dateFeedback = ref<string>('')
 
 function verifyDate(): void {
+  event('sudoku', { dateInput: dateInput.value });
   if (dateInput.value === '14/02/2026') {
     router.push('/congratulations')
   } else {
