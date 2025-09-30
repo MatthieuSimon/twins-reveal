@@ -4,9 +4,9 @@ import router from './router'
 import { createI18n } from 'vue-i18n'
 import enUS from './locales/en-GB.json'
 import frFR from './locales/fr-FR.json'
+import { configure } from "vue-gtag";
 
 const app = createApp(App)
-
 
 // Type-define 'en-US' as the master schema for the resource
 type MessageSchema = typeof enUS
@@ -16,6 +16,13 @@ const i18n = createI18n<[MessageSchema], 'fr-FR' | 'en-GB'>({
   messages: {
     'fr-FR': frFR,
     'en-GB': enUS
+  }
+})
+
+configure({
+  tagId: "G-YPLYZ7K19D",
+  pageTracker: {
+    router,
   }
 })
 
