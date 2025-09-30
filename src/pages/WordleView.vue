@@ -67,7 +67,7 @@ function getTargetWord(): string {
 
 function submitGuess(): void {
   nbAttempt.value = nbAttempt.value+1;
-  event('wordle_guess', { word: currentGuess });
+  event('wordle_guess', { word: currentGuess.value });
   const guess = currentGuess.value.trim()
   if (guess.length !== 7) {
     message.value = t('word_length_incorrect')
